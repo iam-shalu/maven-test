@@ -1,42 +1,36 @@
 package com.example;
 
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GoogleSearchTest {
 
-    WebDriver driver;
-
-    @BeforeClass
-    public void setUp() {
-        // ChromeDriver ka path set karein
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-        driver = new ChromeDriver();
-    }
-
     @Test
     public void testGoogleSearch() {
-        // Google website open karein
-        driver.get("https://www.google.com");
+        // Set the path of the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "C:\tools\chromedriver_win32/chromedriver"); // Replace with your chromedriver path
 
-        // Search box locate karein
-        WebElement searchBox = driver.findElement(By.name("q"));
-        searchBox.sendKeys("Selenium WebDriver");
-        searchBox.submit();
+        // Create an instance of Chrome WebDriver
+        WebDriver driver = new ChromeDriver();
+        
+        try {
+            // Open Google homepage
+            driver.get("https://www.google.com");
 
-        // Title validate karein
-        assert driver.getTitle().contains("Selenium WebDriver");
-    }
+            // Locate the search bar using its name attribute and enter the search query
+            driver.findElement(By.name("q")).sendKeys("Selenium WebDriver");
 
-    @AfterClass
-    public void tearDown() {
-        // Browser band karein
-        driver.quit();
+            // Submit the search form
+            driver.findElement(By.name("btnK")).submit();
+            
+            // Verify the page title contains the search query
+            assertTrue(driver.getTitle().contains("Selenium WebDriver"));
+        } finally {
+            // Close the browser after the test
+            driver.quit();
+        }
     }
 }
-
