@@ -5,41 +5,43 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>maven-test</artifactId>
+    <artifactId>chromedriver-test</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <!-- Selenium Dependency -->
+        <!-- Selenium WebDriver dependency -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.7.0</version> <!-- Check for latest version -->
+            <version>4.6.0</version> <!-- Use the latest version -->
         </dependency>
 
-        <!-- JUnit Dependency -->
+        <!-- ChromeDriver dependency -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.2</version> <!-- Latest JUnit 5 version -->
-            <scope>test</scope>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.6.0</version> <!-- Use the latest version -->
         </dependency>
+
+        <!-- TestNG (optional for running tests) -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.9.2</version> <!-- Latest JUnit 5 version -->
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.7.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Surefire plugin for running JUnit tests -->
+            <!-- Maven Compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version> <!-- Use latest version of Surefire plugin -->
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
-                    <useJUnitPlatform>true</useJUnitPlatform> <!-- Enables JUnit 5 support -->
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
