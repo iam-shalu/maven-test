@@ -11,7 +11,7 @@ public class GoogleSearchTest {
     @Test
     public void testGoogleSearch() {
         // Set the path of the ChromeDriver executable
-        System.setProperty("webdriver.chrome.driver", "C:\tools\chromedriver_win32/chromedriver"); // Replace with your chromedriver path
+        System.setProperty("webdriver.chrome.driver", "C:/tools/chromedriver_win32/chromedriver"); // Replace with your chromedriver path
 
         // Create an instance of Chrome WebDriver
         WebDriver driver = new ChromeDriver();
