@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <!-- Required POM structure -->
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>com.example</groupId>
     <artifactId>maven-test</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
+
     <dependencies>
         <!-- Selenium Dependency -->
         <dependency>
@@ -31,4 +31,18 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Surefire plugin for running JUnit tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version> <!-- Use the latest version of Surefire plugin -->
+                <configuration>
+                    <useJUnitPlatform>true</useJUnitPlatform> <!-- This enables JUnit 5 support -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
