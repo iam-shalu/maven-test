@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement;
-import org.junit.jupiter.api.Test;  // Import JUnit 5 Test annotation
-import static org.junit.jupiter.api.Assertions.assertTrue;  // Import assertion method
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 
@@ -14,7 +14,7 @@ public class GoogleSearchTest {
     @Test
     public void testGoogleSearch() {
         // Set the path of the ChromeDriver executable
-        System.setProperty("webdriver.chrome.driver", "C:/tools/chromedriver_win32/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "C:/tools/chromedriver_win32/chromedriver.exe");  // Ensure this path is correct
 
         // Create an instance of Chrome WebDriver
         WebDriver driver = new ChromeDriver();
