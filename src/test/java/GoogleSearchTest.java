@@ -21,6 +21,7 @@ public class GoogleSearchTest {
 
         try {
             // Open Google homepage
+            System.out.println("Opening Google homepage...");
             driver.get("https://www.google.com");
 
             // Wait for the search bar to be visible
@@ -37,9 +38,13 @@ public class GoogleSearchTest {
             // Wait for the results to load and verify the page title contains the search query
             wait.until(ExpectedConditions.titleContains("Selenium WebDriver"));
             assertTrue(driver.getTitle().contains("Selenium WebDriver"));
+            System.out.println("Test passed, title contains 'Selenium WebDriver'");
+        } catch (Exception e) {
+            System.out.println("Test failed: " + e.getMessage());
         } finally {
             // Close the browser after the test
             driver.quit();
+            System.out.println("Browser closed.");
         }
     }
 }
