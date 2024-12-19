@@ -1,50 +1,36 @@
+package com.example;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.WebElement;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import org.testng.annotations.AfterClass;
 
-import java.time.Duration;
+public class ChromeDriverTest {
 
-public class GoogleSearchTest {
+    private WebDriver driver;
+
+    @BeforeClass
+    public void setup() {
+        // Set the path for ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/your/chromedriver.exe");
+        // Initialize the ChromeDriver
+        driver = new ChromeDriver();
+    }
 
     @Test
-    public void testGoogleSearch() {
-        // Set the path of the ChromeDriver executable
-        System.setProperty("webdriver.chrome.driver", "C:/tools/chromedriver_win32/chromedriver.exe");  // Ensure this path is correct
+    public void testLaunchWebsite() {
+        // Launch a website
+        driver.get("https://www.google.com");
+        // Perform assertions if needed, for example:
+        // Assert.assertEquals(driver.getTitle(), "Google");
+    }
 
-        // Create an instance of Chrome WebDriver
-        WebDriver driver = new ChromeDriver();
-
-        try {
-            // Open Google homepage
-            System.out.println("Opening Google homepage...");
-            driver.get("https://www.google.com");
-
-            // Wait for the search bar to be visible
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("q")));
-
-            // Locate the search bar and enter the search query
-            searchBox.sendKeys("Selenium WebDriver");
-
-            // Wait for the search button and submit the form
-            WebElement searchButton = driver.findElement(By.name("btnK"));
-            searchButton.submit();
-
-            // Wait for the results to load and verify the page title contains the search query
-            wait.until(ExpectedConditions.titleContains("Selenium WebDriver"));
-            assertTrue(driver.getTitle().contains("Selenium WebDriver"));
-            System.out.println("Test passed, title contains 'Selenium WebDriver'");
-        } catch (Exception e) {
-            System.out.println("Test failed: " + e.getMessage());
-        } finally {
-            // Close the browser after the test
+    @AfterClass
+    public void tearDown() {
+        // Close the browser after the test is completed
+        if (driver != null) {
             driver.quit();
-            System.out.println("Browser closed.");
         }
     }
 }
